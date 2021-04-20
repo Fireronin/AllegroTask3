@@ -27,7 +27,7 @@ class S(BaseHTTPRequestHandler):
             try:    
                 user = g.get_user(self.path[len("/repos/"):])
                 self._set_response(200)
-                self.wfile.write("Repository name | number of stars <br>").encode('utf-8')
+                self.wfile.write("Repository name | number of stars <br>".encode('utf-8'))
                 for repo in user.get_repos():
                     print(repo.name+" "+str(repo.stargazers_count) )
                     self.wfile.write((repo.name+" "+str(repo.stargazers_count)+"<br>").encode('utf-8'))    
@@ -67,7 +67,7 @@ def run(server_class=HTTPServer, handler_class=S, port=8420):
 
 if __name__ == '__main__':
     from sys import argv
-
+    
     if len(argv) == 2:
         run(port=int(argv[1]))
     else:
